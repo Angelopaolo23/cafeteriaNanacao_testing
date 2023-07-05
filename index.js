@@ -55,10 +55,8 @@ app.delete("/cafes/:id", (req, res) => {
     if (jwt) {
         const { id } = req.params
         const cafeIndexFound = cafes.findIndex(c => c.id == id)
-
         if (cafeIndexFound >= 0) {
             cafes.splice(cafeIndexFound, 1)
-            console.log(cafeIndexFound, cafes)
             res.send(cafes)
         } else {
             res.status(404).send({ message: "No se encontró ningún cafe con ese id" })
